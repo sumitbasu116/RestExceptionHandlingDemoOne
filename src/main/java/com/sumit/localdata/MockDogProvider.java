@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.sumit.model.Dog;
-import com.sumit.model.DogDto;
+import com.sumit.model.DogRequestModel;
 
 @Component
 public class MockDogProvider {
@@ -31,7 +31,7 @@ public class MockDogProvider {
         }
         return null;
     }
-    public void add(DogDto dto) {
+    public void add(DogRequestModel dto) {
         mockDogStore.add(Dog.of(dto.getDogId(), dto.getDogName(), dto.getDogAge()));
     }
     public void delete(long id) {

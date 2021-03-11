@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sumit.model.BaseResponseModel;
 import com.sumit.model.Dog;
-import com.sumit.model.DogDto;
+import com.sumit.model.DogRequestModel;
 import com.sumit.service.DogService;
 
 @RestController
@@ -32,11 +33,11 @@ public class DogController {
         return service.getDogs();
     }
     @PostMapping
-    public void postDogs(@RequestBody DogDto dto) {
+    public void postDogs(@RequestBody DogRequestModel dto) {
         service.add(dto);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Dog> getById(@PathVariable(required = true) long id) {
+    public ResponseEntity<BaseResponseModel> getById(@PathVariable(required = true) long id) {
         return service.getDogById(id);
     }
     @DeleteMapping("/{id}")
