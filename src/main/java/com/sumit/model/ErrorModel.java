@@ -1,19 +1,30 @@
 package com.sumit.model;
 
-public class ErrorModel {
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sumit.util.ApplicationContextHelper;
+import com.sumit.util.messaging.MessageService;
+import com.sumit.util.messaging.MessageServiceImplementation;
 
-	private String field;
+public class ErrorModel {
+	@JsonIgnore
+	private final MessageService messageService = (MessageService) ApplicationContextHelper.getBean(MessageServiceImplementation.class);
+	
+	@JsonProperty
+	private int code;
+	@JsonProperty
 	private String msg;
-	public String getField() {
-		return field;
+	
+	public void setCode(int code) {
+		this.code = code;
 	}
-	public void setField(String field) {
-		this.field = field;
+
+	public void setMsg() {
+		String message = messageService.getMessage(code);
+		this.msg = message;
 	}
-	public String getMsg() {
-		return msg;
-	}
-	public void setMsg(String msg) {
-		this.msg = msg;
+	public void setMsg(long id) {
+		String message = messageService.getMessage(code,(Object)id);
+		this.msg = message;
 	}
 }
