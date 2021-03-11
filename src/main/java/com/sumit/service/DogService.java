@@ -8,8 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.sumit.localdata.MockDogProvider;
+import com.sumit.model.BaseResponseModel;
 import com.sumit.model.Dog;
-import com.sumit.model.DogDto;
+import com.sumit.model.DogRequestModel;
+import com.sumit.model.ErrorModel;
 
 @Service
 public class DogService {
@@ -22,7 +24,7 @@ public class DogService {
 		this.mockDogProvider=mockDogProvider;
 	}
 	
-    public void add(DogDto dto) {
+    public void add(DogRequestModel dto) {
         mockDogProvider.add(dto);
     }
     public void delete(long id) {
@@ -31,12 +33,20 @@ public class DogService {
     public List<Dog> getDogs() {
         return mockDogProvider.getDogs();
     }
-    public ResponseEntity<Dog> getDogById(long id) {
-    	Dog findDogById = mockDogProvider.findDogById(id);
-    	if(findDogById==null)
+    public ResponseEntity<BaseResponseModel> getDogById(long id) {
+    	Dog dog = mockDogProvider.findDogById(id);
+    	BaseResponseModel baseResponseModel =null;
+    	if(dog==null)
     	{
-    		return new ResponseEntity<>(null,null,HttpStatus.NOT_FOUND);
+    		ErrorModel error= new ErrorModel();
+    		error.setField("ID");
+    		error.setMsg("Not found Dog with the Id "+id);
+    		baseResponseModel = new BaseResponseModel();
+    		baseResponseModel.setError(error);
+    		return new ResponseEntity<>(baseResponseModel,null,HttpStatus.NOT_FOUND);
     	}
-    	return new ResponseEntity<>(findDogById,HttpStatus.OK);
+    	baseResponseModel=new BaseResponseModel();
+    	baseResponseModel.setDog(dog);
+    	return new ResponseEntity<>(baseResponseModel,HttpStatus.OK);
     }
 }

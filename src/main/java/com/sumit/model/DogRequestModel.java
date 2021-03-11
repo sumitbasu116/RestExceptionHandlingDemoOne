@@ -2,7 +2,7 @@ package com.sumit.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class DogDto {
+public class DogRequestModel {
 
 	@JsonProperty("dog_id")
 	private int dogId;
