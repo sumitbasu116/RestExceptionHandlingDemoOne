@@ -39,8 +39,8 @@ public class DogService {
     	if(dog==null)
     	{
     		ErrorModel error= new ErrorModel();
-    		error.setField("ID");
-    		error.setMsg("Not found Dog with the Id "+id);
+    		error.setCode(101);
+    		error.setMsg(id);
     		baseResponseModel = new BaseResponseModel();
     		baseResponseModel.setError(error);
     		return new ResponseEntity<>(baseResponseModel,null,HttpStatus.NOT_FOUND);
