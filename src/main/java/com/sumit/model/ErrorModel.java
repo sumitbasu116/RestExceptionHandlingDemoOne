@@ -6,6 +6,7 @@ import com.sumit.util.ApplicationContextHelper;
 import com.sumit.util.messaging.MessageService;
 import com.sumit.util.messaging.MessageServiceImplementation;
 
+//Internationalization: step6
 public class ErrorModel {
 	@JsonIgnore
 	private final MessageService messageService = (MessageService) ApplicationContextHelper.getBean(MessageServiceImplementation.class);

@@ -7,7 +7,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Component;
 
-
+//Internationalization: step4
 @Component
 public class MessageServiceImplementation implements MessageService {
 
