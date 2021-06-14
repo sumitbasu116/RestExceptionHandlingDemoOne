@@ -8,6 +8,10 @@ import com.sumit.util.messaging.MessageServiceImplementation;
 //Internationalization: step5
 public class ErrorModel {
 //	@JsonIgnore
+	/*
+	* need to create MessageServiceImplementation object manually as MessageServiceImplementation class contains or injecting with an Spring managed bean i.e. 
+	* org.springframework.context.MessageSource
+	*/
 	private final MessageService messageService = (MessageService) ApplicationContextHelper.getBean(MessageServiceImplementation.class);
 //	@Autowired
 //	private MessageServiceImplementation messageService;
