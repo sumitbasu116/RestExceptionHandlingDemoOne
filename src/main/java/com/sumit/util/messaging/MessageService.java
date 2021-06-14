@@ -1,5 +1,6 @@
 package com.sumit.util.messaging;
 
+//Internationalization: step3
 public interface MessageService {
 
 	

@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
 @SpringBootApplication
 public class RestExceptionHandlingDemoOneApplication {
@@ -12,11 +12,11 @@ public class RestExceptionHandlingDemoOneApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(RestExceptionHandlingDemoOneApplication.class, args);
 	}
-
+	//Internationalization: step1
 	@Bean
 	public MessageSource messageSource() {
-		ResourceBundleMessageSource bean = new ResourceBundleMessageSource();
-		bean.setBasename("errormessages/messages");
+		ReloadableResourceBundleMessageSource bean = new ReloadableResourceBundleMessageSource();
+		bean.setBasename("classpath:errormessages/messages");
 		bean.setDefaultEncoding("UTF-8");
 		return bean;
 	}
