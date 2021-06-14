@@ -6,7 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
-//Internationalization: step5
+//Internationalization: step4
 @Component
 public class ApplicationContextHelper implements ApplicationContextAware{
 

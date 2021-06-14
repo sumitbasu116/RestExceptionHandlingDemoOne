@@ -16,7 +16,7 @@ public class RestExceptionHandlingDemoOneApplication {
 	@Bean
 	public MessageSource messageSource() {
 		ReloadableResourceBundleMessageSource bean = new ReloadableResourceBundleMessageSource();
-		bean.setBasename("errormessages/messages");
+		bean.setBasename("classpath:errormessages/messages");
 		bean.setDefaultEncoding("UTF-8");
 		return bean;
 	}

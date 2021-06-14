@@ -1,15 +1,16 @@
 package com.sumit.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sumit.util.ApplicationContextHelper;
 import com.sumit.util.messaging.MessageService;
 import com.sumit.util.messaging.MessageServiceImplementation;
 
-//Internationalization: step6
+//Internationalization: step5
 public class ErrorModel {
-	@JsonIgnore
+//	@JsonIgnore
 	private final MessageService messageService = (MessageService) ApplicationContextHelper.getBean(MessageServiceImplementation.class);
+//	@Autowired
+//	private MessageServiceImplementation messageService;
 	
 	@JsonProperty
 	private int code;
